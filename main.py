@@ -31,23 +31,25 @@ aiplatform.init(project=f"{project_id}", location=f"{region}")
 logclient = google.cloud.logging.Client()
 logclient.setup_logging()
 
+def create_app():
+    app = Flask(__name__)
+    @app.route("/", methods=['POST'])
+    def toy():
+        request_json = request.get_json(silent=True)
+        if request_json and 'toy' in request_json:
+            toy = request_json['toy']
+        else:
+            sys.exit(1)
+        matches = asyncio.run(run_query(toy))
+        answer = ask_gemini(toy, matches)
+        logging.warning(answer)
+        speech(answer, blob_mp3)
+        answer = matches
+        logging.warning(answer)
+        return("\n" + "OK" + "\n")
+    return app
 
-app = Flask(__name__)
 
-@app.route("/", methods=['POST'])
-def toy():
-    request_json = request.get_json(silent=True)
-    if request_json and 'toy' in request_json:
-        toy = request_json['toy']
-    else:
-        sys.exit(1)
-    matches = asyncio.run(run_query(toy))
-    answer = ask_gemini(toy, matches)
-    # logging.warning(answer)
-    #speech(answer, blob_mp3)
-    answer = matches
-    logging.warning(answer)
-    return("\n" + "OK" + "\n")
     
 async def run_query(toy):
     matches = await vector_query(toy)
@@ -177,3 +179,9 @@ def speech(text, bucket_name):
     with blob.open("wb") as f:
         f.write(response.audio_content)
     logging.warning('Audio content written to file')
+
+app = create_app()
+
+if __name__ == "__main__":
+  logging.warning(" Starting app...")
+  app.run(host="0.0.0.0", port=5000)
