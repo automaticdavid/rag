@@ -5,14 +5,14 @@ import google.cloud.logging
 import asyncio
 import asyncpg
 from google.cloud.sql.connector import Connector, IPTypes
-from langchain-community import VertexAIEmbeddings
+from langchain_community import VertexAIEmbeddings
 from google.cloud import aiplatform
 from pgvector.asyncpg import register_vector
 from langchain.chains.summarize import load_summarize_chain
 from langchain_google_vertexai import VertexAI
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate 
-from langchain-community.document_loaders import Document
+from langchain_community.document_loaders import Document
 from google.cloud import texttospeech
 from google.cloud import storage
 from flask import Flask, request
