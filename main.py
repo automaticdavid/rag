@@ -5,11 +5,10 @@ import google.cloud.logging
 import asyncio
 import asyncpg
 from google.cloud.sql.connector import Connector, IPTypes
-from langchain_community import VertexAIEmbeddings
 from google.cloud import aiplatform
 from pgvector.asyncpg import register_vector
 from langchain.chains.summarize import load_summarize_chain
-from langchain_google_vertexai import VertexAI
+from langchain_google_vertexai import VertexAI, VertexAIEmbeddings
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate 
 from langchain_community.document_loaders import Document
