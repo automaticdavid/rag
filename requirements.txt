@@ -9,7 +9,7 @@ langchain-google-vertexai==0.0.5
 google-cloud-texttospeech==2.16.2
 google-cloud-storage==2.14.0
 Flask==3.0.2
-langchain-community==0.0.24
+langchain-community==0.0.31
 gunicorn==21.2.0
 
 
