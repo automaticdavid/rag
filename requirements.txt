@@ -1,0 +1,19 @@
+asyncio==3.4.3 
+asyncpg==0.29.0 
+cloud-sql-python-connector [asyncpg] == 1.7.0
+pgvector==0.1.8
+langchain==0.1.1 
+google-cloud-aiplatform==1.39.0
+google.cloud.logging==3.9.0
+langchain-google-vertexai==0.0.5
+google-cloud-texttospeech==2.16.2
+google-cloud-storage==2.14.0
+Flask==3.0.2
+langchain-community==0.0.24
+gunicorn==21.2.0
+
+
+
+
+
+
