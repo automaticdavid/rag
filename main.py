@@ -11,7 +11,8 @@ from langchain.chains.summarize import load_summarize_chain
 from langchain_google_vertexai import VertexAI, VertexAIEmbeddings
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate 
-from langchain_community.document_loaders import Document
+# from langchain_community.document_loaders import Document
+from langchain.docstore.document import Document
 from google.cloud import texttospeech
 from google.cloud import storage
 from flask import Flask, request
